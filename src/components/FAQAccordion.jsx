@@ -47,7 +47,7 @@ function FAQAccordion() {
                 <div key={index} className="py-4">
                     <button
                         onClick={() => toggle(index)}
-                        className="flex w-full items-center justify-between text-left"
+                        className="flex w-full items-center justify-between text-left cursor-pointer"
                     >
                         <span className="text-base font-semibold text-gray-900">
                             {faq.question}
