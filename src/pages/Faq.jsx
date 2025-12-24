@@ -1,9 +1,14 @@
-import React from 'react'
+import FAQAccordion from "../components/FAQAccordion";
 
 function Faq() {
-    return (
-        <div>Faq</div>
-    )
+  return (
+    <div className="min-h-screen bg-[#EEF5FF] px-4 py-16">
+      <h2 className="mb-10 text-center text-3xl font-bold text-gray-900">
+        Frequently Asked Questions
+      </h2>
+      <FAQAccordion />
+    </div>
+  )
 }
 
 export default Faq
