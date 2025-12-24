@@ -1,8 +1,10 @@
-import React from 'react'
+import Logo from "./Logo"
 
 function Header() {
     return (
-        <div>Header</div>
+        <nav className="h-20">
+            <Logo />
+        </nav>
     )
 }
 
