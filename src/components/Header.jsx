@@ -102,7 +102,7 @@ function Header() {
 
             {/* Mobile Menu */}
             <div className="md:hidden">
-                <div onClick={() => { setOpen(false) }} className={`fixed h-fit inset-0 bg-white transform transition-all duration-300 ease-in-out ${open ? "translate-x-0" : "-translate-x-full"
+                <div onClick={() => { setOpen(false) }} className={`fixed h-[80vh] inset-0 bg-white transform transition-all duration-300 ease-in-out ${open ? "translate-x-0" : "-translate-x-full"
                     }`}>
                     <ul className="text-lg p-8 text-left">
                         <X onClick={() => { setOpen(false) }} className="cursor-pointer text-gray-600 hover:text-purple-400 border-2" />
