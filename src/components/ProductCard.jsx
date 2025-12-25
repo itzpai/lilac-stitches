@@ -35,7 +35,7 @@ function ProductCard({ product }) {
             {/* Info */}
             <div className="flex justify-between items-center mt-4">
                 <div>
-                    <h3 className="text-sm font-medium text-gray-900">
+                    <h3 className="text-md font-medium text-gray-900">
                         {product.name}
                     </h3>
 

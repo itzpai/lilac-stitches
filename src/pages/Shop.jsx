@@ -11,7 +11,7 @@ const products = [
         price: "Ks 12,000",
         image: tp,
         colors: ["#f9a8d4", "#c4b5fd", "#fde68a", "#3D5EC1"],
-        inStock: true
+        inStock: false
     },
     {
         id: 2,
@@ -42,7 +42,7 @@ const products = [
 function Shop() {
     return (
         <section className="bg-[#EEF5FF] px-6 py-8 min-h-screen">
-            <h2 className="mb-8 text-2xl font-semibold text-gray-600">
+            <h2 className="mb-8 text-3xl font-bold text-gray-700 text-center">
                 Shop
             </h2>
 
