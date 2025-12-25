@@ -74,7 +74,7 @@ function Header() {
                                 </Link>
 
                                 <Link
-                                    to="/contact"
+                                    to="/contactus"
                                     className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-500"
                                 >
                                     Contact Us
