@@ -32,7 +32,7 @@ function Footer() {
                             <li className="hover:text-purple-400"><Link to="/faqs">FAQs</Link></li>
                         </ul>
                     </div>
-                    <div className="text-[#C68EFD]">
+                    <div className="text-[#C68EFD] text-center">
                         <p>Follow Us</p>
                         <ul className="flex gap-3 mt-5">
                             <li>
