@@ -96,7 +96,9 @@ function Header() {
                 <div className=" items-center gap-5 flex">
                     <Search className="h-5 w-5 cursor-pointer text-gray-600 hover:text-purple-400" />
                     <Heart className="h-5 w-5 text-gray-600 hover:text-purple-400" />
-                    <ShoppingBag className="h-5 w-5 cursor-pointer text-gray-600 hover:text-purple-400" />
+                    <Link to="/cart">
+                        <ShoppingBag className="h-5 w-5 cursor-pointer text-gray-600 hover:text-purple-400" />
+                    </Link>
                 </div>
             </nav>
 

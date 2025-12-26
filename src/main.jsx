@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router'
+import { CartProvider } from "./context/CartContext";
 import './index.css'
 import Layout from './components/Layout'
 import Home from './pages/Home'
@@ -10,6 +11,7 @@ import Error from './pages/Error'
 import AboutUs from './pages/AboutUs'
 import ContactUs from './pages/ContactUs'
 import Cart from './pages/Cart'
+import Checkout from './pages/Checkout';
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import Faq from './pages/Faq'
 
@@ -42,6 +44,10 @@ const router = createBrowserRouter([{
     element: <Cart />
   },
   {
+    path: "checkout",
+    element: <Checkout />
+  },
+  {
     path: "privacypolicy",
     element: <PrivacyPolicy />
   },
@@ -54,6 +60,8 @@ const router = createBrowserRouter([{
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <CartProvider>
+      <RouterProvider router={router} />
+    </CartProvider>
   </StrictMode>,
 )

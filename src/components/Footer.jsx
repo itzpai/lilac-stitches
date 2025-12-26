@@ -6,7 +6,7 @@ function Footer() {
     return (
         <>
             <footer>
-                <div className="h-135 pl-8 md:pl-0 md:pt-8 flex flex-col md:flex-row justify-evenly lg:h-76 border-b border-gray-300">
+                <div className="h-135 md:h-76 pl-8 md:pl-0 md:pt-8 flex flex-col md:flex-row justify-evenly  border-b border-gray-300">
                     <div className="">
                         <Logo />
                         <p className=" text-gray-500 tracking-wide text-sm leading-8 mt-2">

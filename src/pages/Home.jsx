@@ -1,20 +1,20 @@
 import { Link } from "react-router"
 import home from "../images/home.png"
 import ProductCard from "../components/ProductCard";
-import { products } from "../data/productCardData";
+import { products } from "../data/productData";
 
 function Home() {
     return (
         <>
             {/* banner */}
-            <div className="h-[60vh] md:h-[90vh] flex items-center justify-center bg-sky-100 pl-5 lg:pl-0">
+            <div className="min-h-screen h-[60vh] md:h-[90vh] flex items-center justify-center bg-sky-100 pl-5 lg:pl-0">
                 <div>
                     <p className=" tracking-[3px] font-medium"> New Arrival</p>
                     <h1 className="text-[#C68EFD] text-3xl font-bold lg:text-5xl">
                         Discover Our <br />
                         New Collection
                     </h1>
-                    <p className="text-xs md:text-sm  mb-5 md:my-5 leading-6">
+                    <p className="max-w-md text-xs md:text-sm my-6 leading-6">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lit
                         tellus, luctus nec ullamcorper mattis.
                     </p>
@@ -51,7 +51,7 @@ function Home() {
                     Want a special design in mind? We love creating <br /> custom pieces tailored
                     for you.
                 </p>
-                <Link to="/shop" className="rounded-xl border border-purple-500 px-8 py-3 text-sm font-medium text-purple-500 transition hover:bg-purple-500 hover:text-white">
+                <Link to="https://telegram.org" className="rounded-xl border border-purple-500 px-8 py-3 text-sm font-medium text-purple-500 transition hover:bg-purple-500 hover:text-white">
                     Custom Order
                 </Link>
             </div>
