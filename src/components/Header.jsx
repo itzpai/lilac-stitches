@@ -1,4 +1,3 @@
-// Navbar.jsx
 import { Link, NavLink } from "react-router";
 import { Menu, X, Heart, ShoppingBag, Search } from "lucide-react";
 import { useState } from "react";
@@ -53,7 +52,7 @@ function Header() {
                         </Link>
                     </li>
 
-                    {/* INFO DROPDOWN */}
+                    {/* Info */}
                     <li
                         className="relative"
                         onMouseOver={() => setInfoOpen(true)}

@@ -1,4 +1,4 @@
-import { useCart } from "../context/CartContext";
+import useCart from "../context/CartContext";
 import { Link } from "react-router";
 import qr from "../images/dummy-qr.png"
 

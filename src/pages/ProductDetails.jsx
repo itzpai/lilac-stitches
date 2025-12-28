@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router";
 import { useState } from "react";
-import { useCart } from "../context/CartContext";
+import useCart from "../context/CartContext";
 import { products } from "../data/productData";
 
 export default function ProductDetails() {

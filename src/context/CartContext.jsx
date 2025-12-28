@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 const CartContext = createContext();
 
-export const CartProvider = ({ children }) => {
+export function CartProvider({ children }) {
     const [cart, setCart] = useState(() => {
         const stored = localStorage.getItem("cart");
         return stored ? JSON.parse(stored) : [];
@@ -61,4 +61,12 @@ export const CartProvider = ({ children }) => {
     );
 };
 
-export const useCart = () => useContext(CartContext);
+function useCart() {
+    const context = useContext(CartContext)
+    if (context === undefined) {
+        throw new Error("useCart must be used within a CartProvider")
+    }
+    return context
+}
+
+export default useCart
