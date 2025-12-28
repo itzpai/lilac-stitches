@@ -9,18 +9,17 @@ export default function ProductDetails() {
     const { addToCart } = useCart();
 
     const product = products.find((p) => p.id === id);
+    if (!product) return <p className="p-10">Product not found</p>;
 
     const [qty, setQty] = useState(1);
-    const [selectedColor, setSelectedColor] = useState(
-        product?.colors[0]
+    const [selectedVariant, setSelectedVariant] = useState(
+        product.variants[0]
     );
-
-    if (!product) return <p className="p-10">Product not found</p>;
 
     return (
         <div className="bg-[#EEF5FF] p-6 flex flex-col md:flex-row justify-center items-center gap-10">
             <img
-                src={product.image}
+                src={[selectedVariant.image]}
                 className="w-full sm:w-1/2 lg:w-1/4 object-cover rounded-md"
                 alt={product.name}
             />
@@ -32,27 +31,39 @@ export default function ProductDetails() {
                 </p>
 
                 {/* details */}
-                <div className="max-w-md my-6 text-md">
-                    <p>{product.description}</p>
+                <div className="max-w-xl my-6">
+                    <p className="text-md font-medium">{product.description} <span className="text-sm text-gray-500">
+                        {product.description2}
+                    </span>
+                    </p>
+                    <p className="text-md font-medium my-3">Material : <span>{product.Material}</span></p>
+                    <p className=" text-sm font-medium ">IncludedFreebies : <span>{product.IncludedFreebies}</span></p>
                 </div>
 
                 {/* Color selection */}
-                <div>
-                    <p className="mb-2 font-medium">Available Colors</p>
-                    <div className="flex gap-3">
-                        {product.colors.map((color) => (
-                            <button
-                                key={color}
-                                onClick={() => setSelectedColor(color)}
-                                className={`w-8 h-8 rounded-full border-2 cursor-pointer ${selectedColor === color
+                <div className="flex gap-3 mt-4">
+                    {product.variants.map((variant) => (
+                        <button
+                            key={variant.color}
+                            disabled={!variant.inStock}
+                            onClick={() => setSelectedVariant(variant)}
+                            className={`w-8 h-8 rounded-full border-2 relative
+        ${selectedVariant.color === variant.color
                                     ? "border-black"
-                                    : "border-gray-300"
-                                    }`}
-                                style={{ backgroundColor: color }}
-                            />
-                        ))}
-                    </div>
+                                    : "border-gray-300"}
+        ${!variant.inStock && "opacity-40 cursor-not-allowed"}
+      `}
+                            style={{ backgroundColor: variant.color }}
+                        >
+                            {!variant.inStock && (
+                                <span className="absolute inset-0 flex items-center justify-center text-xs">
+                                    ✕
+                                </span>
+                            )}
+                        </button>
+                    ))}
                 </div>
+
 
                 {/* Quantity */}
                 <div className="flex items-center gap-4 ml-6 my-4">
@@ -72,13 +83,27 @@ export default function ProductDetails() {
                 </div>
 
                 <button
+                    disabled={!selectedVariant.inStock}
                     onClick={() => {
-                        addToCart(product, qty, selectedColor);
-                        navigate("/cart");
+                        addToCart(
+                            {
+                                id: product.id,
+                                name: product.name,
+                                price: product.price,
+                                image: selectedVariant.image,
+                            },
+                            qty,
+                            selectedVariant.color
+                        );
                     }}
-                    className="rounded-xl border border-purple-500 px-8 py-3 text-sm font-medium text-purple-500 transition hover:bg-purple-500 hover:text-white"
+                    className={`mt-6 px-6 py-3 rounded-lg text-white
+    ${selectedVariant.inStock
+                            ? "bg-purple-500 hover:bg-purple-600"
+                            : "bg-gray-400 cursor-not-allowed"
+                        }
+  `}
                 >
-                    Add to Cart
+                    {selectedVariant.inStock ? "Add to Cart" : "Out of Stock"}
                 </button>
             </div>
         </div>

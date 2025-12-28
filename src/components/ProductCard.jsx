@@ -11,12 +11,12 @@ function ProductCard({ product }) {
                 {/* Image Wrapper */}
                 <div className="relative overflow-hidden rounded-xl bg-gray-100">
                     <img
-                        src={product.image}
+                        src={product.variants[0].image}
                         alt={product.name}
                         className="h-56 w-full object-cover transition group-hover:scale-105"
                     />
                     {/* Out of Stock Overlay */}
-                    {product.stock === 0 && (
+                    {product.inStock && (
                         <div className="absolute inset-0 bg-gray-300 flex items-center justify-center">
                             <span className="text-white font-semibold text-lg">Out of Stock</span>
                         </div>
@@ -46,16 +46,16 @@ function ProductCard({ product }) {
 
                         {/* Colors */}
                         <div className="flex gap-2">
-                            {product.colors.map((color, index) => (
+                            {product.variants.map((color, index) => (
                                 <span
                                     key={index}
                                     className="h-4 w-4 rounded-full border hover:border-2 mt-2"
-                                    style={{ backgroundColor: color }}
+                                    style={{ backgroundColor: color.color }}
                                 />
                             ))}
                         </div>
                     </div>
-                    {product.stock === 0 && (<div className="mt-2 text-sm text-red-500 font-semibold">
+                    {product.inStock && (<div className="mt-2 text-sm text-red-500 font-semibold">
                         Out of Stock
                     </div>
                     )}
