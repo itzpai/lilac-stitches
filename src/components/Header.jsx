@@ -1,14 +1,98 @@
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import { Menu, X, Heart, ShoppingBag, Search } from "lucide-react";
 import { useState } from "react";
 import Logo from "./Logo"
+import { products } from "../data/productData"
+import ProductCard from "./ProductCard";
 
 function Header() {
     const [open, setOpen] = useState(false);
     const [infoOpen, setInfoOpen] = useState(false);
+    const [searchOpen, setSearchOpen] = useState(false);
+    const [query, setQuery] = useState("");
+    const navigate = useNavigate();
+
+    const suggestions =
+        query.length > 0
+            ? products.filter((product) =>
+                product.name.toLowerCase().includes(query.toLowerCase())
+            )
+            : [];
+
+    function handleSearch(e) {
+        e.preventDefault();
+        if (!query.trim()) return;
+        navigate(`/shop?q=${query}`);
+        setSearchOpen(false);
+        setQuery("");
+    }
+
+    const filteredProducts = products
+    .filter((p) =>
+        p.name.toLowerCase().includes(query.toLowerCase())
+    )
 
     return (
         <header className="sticky top-0 z-50 bg-white shadow-sm">
+            <div
+                className={`fixed top-0 left-0 z-50 w-full bg-white shadow-md transition-transform duration-300 ease-out
+  ${searchOpen ? "translate-y-0" : "-translate-y-full"}`}
+            >
+                <div className="mx-auto max-w-2xl px-5 py-6">
+                    {/* Search Input */}
+                    <form
+                        onSubmit={e => handleSearch(e)}
+                        className="relative"
+                    >
+                        <input
+                            autoFocus
+                            value={query}
+                            onChange={(e) => setQuery(e.target.value)}
+                            placeholder="Search products..."
+                            className="w-full rounded-xl  px-5 py-3 text-sm focus:outline-purple-400"
+                        />
+
+                        {/* Suggestions */}
+                        {query && (
+                            <div className="absolute top-full left-0 right-0 mt-2 max-h-fit flex justify-center gap-3 rounded-xl bg-white shadow-lg">
+                                {
+                                    filteredProducts.slice(0, 5)
+                                    .map((item) => (
+                                        <div
+                                            key={item.id}
+                                            onClick={() => {
+                                                navigate(`/product/${item.id}`);
+                                                setSearchOpen(false);
+                                                setQuery("");
+                                            }}
+                                            className="cursor-pointer px-4 py-3 text-sm rounded-xl hover:bg-purple-50 hover:text-purple-500"
+                                        >
+                                            <img className="w-30 h-30 object-cover" src={item.variants[0].image} alt={item.name} />
+                                            <div>
+                                                <p>{item.name}</p>
+                                                <p>Ks {item.price.toLocaleString()}</p>
+                                            </div>
+                                        </div>
+                                    ))
+                                }
+                                {filteredProducts.length === 0 && (
+                                        <p className="px-4 py-3 text-sm text-gray-500">
+                                            No products found
+                                        </p>
+                                    )}
+                            </div>
+                        )}
+                    </form>
+                </div>
+            </div>
+
+            {searchOpen && (
+  <div
+    onClick={() => setSearchOpen(false)}
+    className="fixed inset-0 z-40 bg-black/30"
+  />
+)}
+
             <nav className="mx-auto flex max-w-7xl items-center justify-between p-5">
                 <div className="flex items-center">
                     {/* Mobile Menu Button */}
@@ -93,7 +177,7 @@ function Header() {
 
                 {/* Desktop Icons */}
                 <div className=" items-center gap-5 flex">
-                    <Search className="h-5 w-5 cursor-pointer text-gray-600 hover:text-purple-400" />
+                    <Search onClick={() => setSearchOpen(!searchOpen)} className="h-5 w-5 cursor-pointer text-gray-600 hover:text-purple-400" />
                     <Heart className="h-5 w-5 text-gray-600 hover:text-purple-400" />
                     <Link to="/cart">
                         <ShoppingBag className="h-5 w-5 cursor-pointer text-gray-600 hover:text-purple-400" />
