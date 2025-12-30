@@ -1,6 +1,6 @@
 import { Link, NavLink, useNavigate } from "react-router";
 import { Menu, X, Heart, ShoppingBag, Search } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Logo from "./Logo"
 import { products } from "../data/productData"
 import ProductCard from "./ProductCard";
@@ -11,6 +11,13 @@ function Header() {
     const [searchOpen, setSearchOpen] = useState(false);
     const [query, setQuery] = useState("");
     const navigate = useNavigate();
+    const searchRef = useRef(null)
+
+    useEffect(() => {
+        if (searchOpen && searchRef.current) {
+            searchRef.current.focus()
+        }
+    }, [searchOpen])
 
     const suggestions =
         query.length > 0
@@ -28,9 +35,9 @@ function Header() {
     }
 
     const filteredProducts = products
-    .filter((p) =>
-        p.name.toLowerCase().includes(query.toLowerCase())
-    )
+        .filter((p) =>
+            p.name.toLowerCase().includes(query.toLowerCase())
+        )
 
     return (
         <header className="sticky top-0 z-50 bg-white shadow-sm">
@@ -45,11 +52,12 @@ function Header() {
                         className="relative"
                     >
                         <input
-                            autoFocus
+                            ref={searchRef}
+                            type="text"
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}
                             placeholder="Search products..."
-                            className="w-full rounded-xl  px-5 py-3 text-sm focus:outline-purple-400"
+                            className="w-full rounded-xl outline-gray-100 px-5 py-3 text-sm focus:outline-blue-400"
                         />
 
                         {/* Suggestions */}
@@ -57,29 +65,29 @@ function Header() {
                             <div className="absolute top-full left-0 right-0 mt-2 max-h-fit flex justify-center gap-3 rounded-xl bg-white shadow-lg">
                                 {
                                     filteredProducts.slice(0, 5)
-                                    .map((item) => (
-                                        <div
-                                            key={item.id}
-                                            onClick={() => {
-                                                navigate(`/product/${item.id}`);
-                                                setSearchOpen(false);
-                                                setQuery("");
-                                            }}
-                                            className="cursor-pointer px-4 py-3 text-sm rounded-xl hover:bg-purple-50 hover:text-purple-500"
-                                        >
-                                            <img className="w-30 h-30 object-cover" src={item.variants[0].image} alt={item.name} />
-                                            <div>
-                                                <p>{item.name}</p>
-                                                <p>Ks {item.price.toLocaleString()}</p>
+                                        .map((item) => (
+                                            <div
+                                                key={item.id}
+                                                onClick={() => {
+                                                    navigate(`/product/${item.id}`);
+                                                    setSearchOpen(false);
+                                                    setQuery("");
+                                                }}
+                                                className="cursor-pointer px-4 py-3 text-sm rounded-xl hover:bg-purple-50 hover:text-purple-500"
+                                            >
+                                                <img className="w-30 h-30 object-cover" src={item.variants[0].image} alt={item.name} />
+                                                <div>
+                                                    <p>{item.name}</p>
+                                                    <p>Ks {item.price.toLocaleString()}</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    ))
+                                        ))
                                 }
                                 {filteredProducts.length === 0 && (
-                                        <p className="px-4 py-3 text-sm text-gray-500">
-                                            No products found
-                                        </p>
-                                    )}
+                                    <p className="px-4 py-3 text-sm text-gray-500">
+                                        No products found
+                                    </p>
+                                )}
                             </div>
                         )}
                     </form>
@@ -87,11 +95,11 @@ function Header() {
             </div>
 
             {searchOpen && (
-  <div
-    onClick={() => setSearchOpen(false)}
-    className="fixed inset-0 z-40 bg-black/30"
-  />
-)}
+                <div
+                    onClick={() => { setSearchOpen(false); setQuery(""); }}
+                    className="fixed inset-0 z-40 bg-black/30"
+                />
+            )}
 
             <nav className="mx-auto flex max-w-7xl items-center justify-between p-5">
                 <div className="flex items-center">
@@ -154,13 +162,6 @@ function Header() {
                                     className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-500"
                                 >
                                     About Us
-                                </Link>
-
-                                <Link
-                                    to="/contactus"
-                                    className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-500"
-                                >
-                                    Contact Us
                                 </Link>
 
                                 <Link

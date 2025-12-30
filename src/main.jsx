@@ -9,10 +9,8 @@ import Shop from './pages/Shop'
 import ProductDetails from './pages/ProductDetails'
 import Error from './pages/Error'
 import AboutUs from './pages/AboutUs'
-import ContactUs from './pages/ContactUs'
 import Cart from './pages/Cart'
 import Checkout from './pages/Checkout';
-import PrivacyPolicy from './pages/PrivacyPolicy'
 import Faq from './pages/Faq'
 
 const router = createBrowserRouter([{
@@ -32,12 +30,8 @@ const router = createBrowserRouter([{
     element: <ProductDetails />
   },
   {
-    path: "aboutus",
+    path: "about",
     element: <AboutUs />
-  },
-  {
-    path: "contactus",
-    element: <ContactUs />
   },
   {
     path: "cart",
@@ -46,10 +40,6 @@ const router = createBrowserRouter([{
   {
     path: "checkout",
     element: <Checkout />
-  },
-  {
-    path: "privacypolicy",
-    element: <PrivacyPolicy />
   },
   {
     path: "faqs",
