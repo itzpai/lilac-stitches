@@ -1,3 +1,22 @@
+import tp from "../images/Twinkling/Tp.jpg"
+import tb from "../images/Twinkling/Tb.jpg"
+import ty from "../images/Twinkling/Ty.jpg"
+import tv from "../images/Twinkling/Tv.jpg"
+import bb from "../images/Bunny/Bb.jpg"
+import bv from "../images/Bunny/Bv.jpg"
+import by from "../images/Bunny/By.jpg"
+import bp from "../images/Bunny/Bp.jpg"
+import bw from "../images/Bunny/Bw.jpg"
+import sy from "../images/Star/Sy.jpg"
+import sb from "../images/Star/Sb.jpg"
+import sp from "../images/Star/Sp.jpg"
+import sv from "../images/Star/Sv.jpg"
+import rw from "../images/RandomCharm/Rw.jpg"
+import rb from "../images/RandomCharm/Rb.jpg"
+import rp from "../images/RandomCharm/Rp.jpg"
+import ry from "../images/RandomCharm/Ry.jpg"
+import rv from "../images/RandomCharm/Rv.jpg"
+
 export const products = [
   {
     id: "1",
@@ -6,22 +25,22 @@ export const products = [
     variants: [
       {
         color: "#f9a8d4",
-        image: "../src/images/Twinkling/Tp.jpg",
+        image: tp,
         inStock: true,
       },
       {
         color: "#c4b5fd",
-        image: "../src/images/Twinkling/Tb.jpg",
+        image: tb,
         inStock: true,
       },
       {
         color: "#fde68a",
-        image: "../src/images/Twinkling/Ty.jpg",
+        image: ty,
         inStock: true,
       },
       {
         color: "#3D5EC1",
-        image: "../src/images/Twinkling/Tv.jpg",
+        image: tv,
         inStock: true,
       },
     ],
@@ -40,27 +59,27 @@ export const products = [
     variants: [
       {
         color: "#5F718A",
-        image: "../src/images/Bunny/Bb.jpg",
+        image: bb,
         inStock: true,
       },
       {
         color: "#507AB4",
-        image: "../src/images/Bunny/Bv.jpg",
+        image: bv,
         inStock: true,
       },
       {
         color: "#fcd34d",
-        image: "../src/images/Bunny/By.jpg",
+        image: by,
         inStock: true,
       },
       {
         color: "#B3B3B5",
-        image: "../src/images/Bunny/Bp.jpg",
+        image: bp,
         inStock: true,
       },
       {
         color: "#F8F8F8",
-        image: "../src/images/Bunny/Bw.jpg",
+        image: bw,
         inStock: true,
       },
     ],
@@ -79,16 +98,24 @@ export const products = [
     variants: [
       {
         color: "#fcd34d",
-        image: "../src/images/Star/Sy.jpg",
+        image: sy,
         inStock: true,
       },
       {
         color: "#29B3BF",
-        image: "../src/images/Star/Sb.jpg",
+        image: sb,
         inStock: true,
       },
-      { color: "#a7f3d0", image: "../src/images/Star/Sp.jpg", inStock: true },
-      { color: "#A776B7", image: "../src/images/Star/Sv.jpg", inStock: true },
+      { 
+        color: "#a7f3d0", 
+        image: sp, 
+        inStock: true 
+      },
+      { 
+        color: "#A776B7", 
+        image: sv, 
+        inStock: true 
+      },
     ],
     description:
       "This collection is designed as clean and refreshing look for your bias pc with two sized stars. ⭐️",
@@ -105,27 +132,27 @@ export const products = [
     variants: [
       {
         color: "#F8F8F8",
-        image: "../src/images/RandomCharm/Rw.jpg",
+        image: rw,
         inStock: true,
       },
       {
         color: "#82A2E0",
-        image: "../src/images/RandomCharm/Rb.jpg",
+        image: rb,
         inStock: true,
       },
       {
         color: "#a7f3d0",
-        image: "../src/images/RandomCharm/Rp.jpg",
+        image: rp,
         inStock: true,
       },
       {
         color: "#fcd34d",
-        image: "../src/images/RandomCharm/Ry.jpg",
+        image: ry,
         inStock: true,
       },
       {
         color: "#F7B2EB",
-        image: "../src/images/RandomCharm/Rv.jpg",
+        image: rv,
         inStock: true,
       },
     ],

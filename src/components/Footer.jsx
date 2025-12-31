@@ -27,11 +27,11 @@ function Footer() {
                     <div className="flex text-gray-400">
                         <ul className="lg:leading-12">
                             <li className="text-purple-400">Help</li>
-                            <li className="hover:text-purple-400"><Link to="/aboutus">About Us</Link></li>
+                            <li className="hover:text-purple-400"><Link to="/about">About Us</Link></li>
                             <li className="hover:text-purple-400"><Link to="/faqs">FAQs</Link></li>
                         </ul>
                     </div>
-                    <div className="text-purple-400 text-center">
+                    <div className="text-purple-400 md:text-center">
                         <p>Follow Us</p>
                         <ul className="flex gap-3 mt-5">
                             <li>

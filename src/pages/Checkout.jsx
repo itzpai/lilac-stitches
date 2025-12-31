@@ -1,6 +1,6 @@
 import useCart from "../context/CartContext";
 import { Link } from "react-router";
-import qr from "../images/dummy-qr.png"
+import qr from "../images/dummyqr.png"
 
 export default function Checkout() {
     const { totalPrice, clearCart } = useCart();

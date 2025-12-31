@@ -3,7 +3,6 @@ import { Menu, X, Heart, ShoppingBag, Search } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import Logo from "./Logo"
 import { products } from "../data/productData"
-import ProductCard from "./ProductCard";
 
 function Header() {
     const [open, setOpen] = useState(false);
@@ -13,18 +12,12 @@ function Header() {
     const navigate = useNavigate();
     const searchRef = useRef(null)
 
+    // Search focus
     useEffect(() => {
         if (searchOpen && searchRef.current) {
             searchRef.current.focus()
         }
     }, [searchOpen])
-
-    const suggestions =
-        query.length > 0
-            ? products.filter((product) =>
-                product.name.toLowerCase().includes(query.toLowerCase())
-            )
-            : [];
 
     function handleSearch(e) {
         e.preventDefault();
@@ -188,14 +181,13 @@ function Header() {
 
             {/* Mobile Menu */}
             <div className="md:hidden">
-                <div onClick={() => { setOpen(false) }} className={`fixed h-[80vh] inset-0 bg-white transform transition-all duration-300 ease-in-out ${open ? "translate-x-0" : "-translate-x-full"
+                <div onClick={() => { setOpen(false) }} className={`fixed h-screen inset-0 bg-white transform transition-all duration-300 ease-in-out ${open ? "translate-x-0" : "-translate-x-full"
                     }`}>
                     <ul className="text-lg p-8 text-left">
                         <X onClick={() => { setOpen(false) }} className="cursor-pointer text-gray-600 hover:text-purple-400 border-2" />
-                        {["Home", "Products", "Shop", "About Us", "Contact Us", "FAQs", "Wishlist", "Cart"].map((item) => (
-                            <li className="pt-5 text-base font-medium">
+                        {["Home", "Products", "Shop", "About Us", "FAQs", "Wishlist", "Cart"].map((item) => (
+                            <li key={item} className="pt-5 text-base font-medium">
                                 <Link
-                                    key={item}
                                     to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
                                     onClick={() => setOpen(false)}
                                     className="relative after:absolute after:bg-purple-400 after:h-0.5 after:w-0 after:left-0 after:top-6 after:duration-300 hover:text-purple-400 hover:after:w-full"
