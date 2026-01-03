@@ -6,6 +6,7 @@ import { products } from "../data/productData"
 
 function Header() {
     const [open, setOpen] = useState(false);
+    const [productOpen, setProductOpen] = useState(false);
     const [infoOpen, setInfoOpen] = useState(false);
     const [searchOpen, setSearchOpen] = useState(false);
     const [query, setQuery] = useState("");
@@ -94,6 +95,7 @@ function Header() {
                 />
             )}
 
+
             <nav className="mx-auto flex max-w-7xl items-center justify-between p-5">
                 <div className="flex items-center">
                     {/* Mobile Menu Button */}
@@ -120,13 +122,35 @@ function Header() {
                             Home
                         </NavLink>
                     </li>
-                    <li className="text-sm font-medium relative after:absolute after:bg-purple-400 after:h-0.5 after:w-0 after:left-0 after:top-6 after:duration-300 hover:text-purple-400 hover:after:w-full">
-                        <NavLink
-                            to="/products"
-                            className={({ isActive }) => isActive ? "text-purple-400 after:w-full" : ""}
-                        >
+                    <li
+                        className="text-sm font-medium relative after:absolute after:bg-purple-400 after:h-0.5 after:w-0 after:left-0 after:top-6 after:duration-300 hover:text-purple-400 hover:after:w-full"
+                        onMouseOver={() => { 
+                            setProductOpen(true);
+                            setInfoOpen(false)
+                        }}
+                    >
+                        <button className="flex items-center gap-1">
                             Products
-                        </NavLink>
+                        </button>
+
+                        {productOpen && (
+                            <div
+                                className="absolute -left-50 top-full mt-3 w-md rounded-xl bg-white p-2 shadow-lg z-50"
+                                onMouseLeave={() => { setProductOpen(false) }}
+                            >
+                                <h3 className="text-center my-2 py-2 rounded-md text-purple-500 bg-purple-100 ">Collections</h3>
+                                {products.map((product) => (
+                                    <Link
+                                        key={product.id}
+                                        to={`/product/${product.id}`}
+                                        onClick={() => { setProductOpen(false) }}
+                                        className="block w-1/2 rounded-lg px-4 py-2 text-sm font-medium text-gray-700 hover:hover:text-purple-500"
+                                    >
+                                        {product.name}
+                                    </Link>
+                                ))}
+                            </div>
+                        )}
                     </li>
                     <li className="text-sm font-medium relative after:absolute after:bg-purple-400 after:h-0.5 after:w-0 after:left-0 after:top-6 after:duration-300 hover:text-purple-400 hover:after:w-full">
                         <NavLink
@@ -140,15 +164,13 @@ function Header() {
                     {/* Info */}
                     <li
                         className="text-sm font-medium relative after:absolute after:bg-purple-400 after:h-0.5 after:w-0 after:left-0 after:top-6 after:duration-300 hover:text-purple-400 hover:after:w-full"
-                        onMouseOver={() => setInfoOpen(true)}
+                        onMouseEnter={() => {
+                            setInfoOpen(true);
+                            setProductOpen(false)
+                        }}
                     >
                         <button className="flex items-center gap-1">
-                            <NavLink
-                                to="/aboutus"
-                                className={({ isActive }) => isActive ? "text-purple-400 after:w-full" : ""}
-                            >
-                                Info
-                            </NavLink>
+                            Info
                         </button>
 
                         {infoOpen && (
@@ -157,7 +179,7 @@ function Header() {
                                 onMouseLeave={() => { setInfoOpen(false) }}>
                                 <NavLink
                                     to="/aboutus"
-                                    className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-500"
+                                    className={`block rounded-lg px-4 py-2 text-sm font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-500 `}
                                 >
                                     About Us
                                 </NavLink>
@@ -178,7 +200,7 @@ function Header() {
                 <div className=" items-center gap-5 flex">
                     <Search onClick={() => setSearchOpen(!searchOpen)} className="h-5 w-5 cursor-pointer text-gray-600 hover:text-purple-400" />
                     <NavLink to="/wishlist" className={({ isActive }) => isActive ? "text-purple-400 after:w-full" : "h-5 w-5 cursor-pointer text-gray-600 hover:text-purple-400"}>
-                    <Heart className="h-5 w-5 text-gray-600 hover:text-purple-400" />
+                        <Heart className="h-5 w-5 text-gray-600 hover:text-purple-400" />
                     </NavLink>
                     <NavLink to="/cart" className={({ isActive }) => isActive ? "text-purple-400 after:w-full" : "h-5 w-5 cursor-pointer text-gray-600 hover:text-purple-400"}>
                         <ShoppingBag className="h-5 w-5" />

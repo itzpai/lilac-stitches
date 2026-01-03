@@ -17,7 +17,7 @@ function Home() {
                         Little Stitches, Big Love. <br />
                         We create every piece with our whole heart and deliver with love.
                     </p>
-                    <Link to="/shop" className="rounded-xl border border-purple-500 px-8 py-3 text-sm font-medium text-purple-500 transition hover:bg-purple-500 hover:text-white">
+                    <Link to="/shop" className="rounded-xl border-2 border-dashed border-purple-500 px-8 py-3 text-sm font-medium text-purple-500 transition hover:bg-purple-500 hover:text-white">
                         Buy Now
                     </Link>
                 </div>
@@ -50,7 +50,7 @@ function Home() {
                     Want a special design in mind? We love creating <br /> custom pieces tailored
                     for you.
                 </p>
-                <Link to="https://m.me/61579644806455" className="rounded-xl border border-purple-500 px-8 py-3 text-sm font-medium text-purple-500 transition hover:bg-purple-500 hover:text-white">
+                <Link to="https://m.me/61579644806455" className="rounded-xl border-2 border-dashed border-purple-500 px-8 py-3 text-sm font-medium text-purple-500 transition hover:bg-purple-500 hover:text-white">
                     Custom Order
                 </Link>
             </div>
