@@ -112,57 +112,62 @@ function Header() {
 
                 {/* Desktop Links */}
                 <ul className="hidden items-center gap-8 md:flex">
-                    <li>
-                        <Link
+                    <li className="text-sm font-medium relative after:absolute after:bg-purple-400 after:h-0.5 after:w-0 after:left-0 after:top-6 after:duration-300 hover:text-purple-400 hover:after:w-full">
+                        <NavLink
                             to="/"
-                            className="text-sm font-medium relative after:absolute after:bg-purple-400 after:h-0.5 after:w-0 after:left-0 after:top-6 after:duration-300 hover:text-purple-400 hover:after:w-full"
+                            className={({ isActive }) => isActive ? "text-purple-400 after:w-full" : ""}
                         >
                             Home
-                        </Link>
+                        </NavLink>
                     </li>
-                    <li>
-                        <Link
+                    <li className="text-sm font-medium relative after:absolute after:bg-purple-400 after:h-0.5 after:w-0 after:left-0 after:top-6 after:duration-300 hover:text-purple-400 hover:after:w-full">
+                        <NavLink
                             to="/products"
-                            className="text-sm font-medium relative after:absolute after:bg-purple-400 after:h-0.5 after:w-0 after:left-0 after:top-6 after:duration-300 hover:text-purple-400 hover:after:w-full"
+                            className={({ isActive }) => isActive ? "text-purple-400 after:w-full" : ""}
                         >
                             Products
-                        </Link>
+                        </NavLink>
                     </li>
-                    <li>
-                        <Link
+                    <li className="text-sm font-medium relative after:absolute after:bg-purple-400 after:h-0.5 after:w-0 after:left-0 after:top-6 after:duration-300 hover:text-purple-400 hover:after:w-full">
+                        <NavLink
                             to="/shop"
-                            className="text-sm font-medium relative after:absolute after:bg-purple-400 after:h-0.5 after:w-0 after:left-0 after:top-6 after:duration-300 hover:text-purple-400 hover:after:w-full"
+                            className={({ isActive }) => isActive ? "text-purple-400 after:w-full" : ""}
                         >
                             Shop
-                        </Link>
+                        </NavLink>
                     </li>
 
                     {/* Info */}
                     <li
-                        className="relative"
+                        className="text-sm font-medium relative after:absolute after:bg-purple-400 after:h-0.5 after:w-0 after:left-0 after:top-6 after:duration-300 hover:text-purple-400 hover:after:w-full"
                         onMouseOver={() => setInfoOpen(true)}
                     >
-                        <button className="flex items-center gap-1 text-sm font-medium relative after:absolute after:bg-purple-400 after:h-0.5 after:w-0 after:left-0 after:top-6 after:duration-300 hover:text-purple-400 hover:after:w-full">
-                            Info
+                        <button className="flex items-center gap-1">
+                            <NavLink
+                                to="/aboutus"
+                                className={({ isActive }) => isActive ? "text-purple-400 after:w-full" : ""}
+                            >
+                                Info
+                            </NavLink>
                         </button>
 
                         {infoOpen && (
                             <div
                                 className="absolute left-0 top-full mt-3 w-44 rounded-xl bg-white p-2 shadow-lg"
                                 onMouseLeave={() => { setInfoOpen(false) }}>
-                                <Link
-                                    to="/about"
+                                <NavLink
+                                    to="/aboutus"
                                     className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-500"
                                 >
                                     About Us
-                                </Link>
+                                </NavLink>
 
-                                <Link
+                                <NavLink
                                     to="/faqs"
                                     className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-700 hover:bg-purple-50 hover:text-purple-500"
                                 >
                                     FAQs
-                                </Link>
+                                </NavLink>
                             </div>
                         )}
                     </li>
@@ -173,9 +178,9 @@ function Header() {
                 <div className=" items-center gap-5 flex">
                     <Search onClick={() => setSearchOpen(!searchOpen)} className="h-5 w-5 cursor-pointer text-gray-600 hover:text-purple-400" />
                     <Heart className="h-5 w-5 text-gray-600 hover:text-purple-400" />
-                    <Link to="/cart">
-                        <ShoppingBag className="h-5 w-5 cursor-pointer text-gray-600 hover:text-purple-400" />
-                    </Link>
+                    <NavLink to="/cart" className={({ isActive }) => isActive ? "text-purple-400 after:w-full" : "h-5 w-5 cursor-pointer text-gray-600 hover:text-purple-400"}>
+                        <ShoppingBag className="h-5 w-5" />
+                    </NavLink>
                 </div>
             </nav>
 
@@ -185,15 +190,15 @@ function Header() {
                     }`}>
                     <ul className="text-lg p-8 text-left">
                         <X onClick={() => { setOpen(false) }} className="cursor-pointer text-gray-600 hover:text-purple-400 border-2" />
-                        {["Home", "Products", "Shop", "About Us", "FAQs", "Wishlist", "Cart"].map((item) => (
+                        {["Home", "Products", "Shop", "AboutUs", "FAQs", "Wishlist", "Cart"].map((item) => (
                             <li key={item} className="pt-5 text-base font-medium">
-                                <Link
+                                <NavLink
                                     to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
                                     onClick={() => setOpen(false)}
-                                    className="relative after:absolute after:bg-purple-400 after:h-0.5 after:w-0 after:left-0 after:top-6 after:duration-300 hover:text-purple-400 hover:after:w-full"
+                                    className={({ isActive }) => isActive ? "text-purple-400 after:w-full" : "relative after:absolute after:bg-purple-400 after:h-0.5 after:w-0 after:left-0 after:top-6 after:duration-300 hover:text-purple-400 hover:after:w-full"}
                                 >
                                     {item}
-                                </Link>
+                                </NavLink>
                             </li>
                         ))}
                     </ul>

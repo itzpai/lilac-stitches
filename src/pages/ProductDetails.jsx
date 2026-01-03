@@ -17,7 +17,7 @@ export default function ProductDetails() {
     );
 
     return (
-        <div className="bg-[#EEF5FF] p-6 flex flex-col md:flex-row justify-center items-center gap-10">
+        <div className="min-h-[90vh] bg-[#EEF5FF] p-6 flex flex-col md:flex-row justify-center items-center gap-10">
             <img
                 src={[selectedVariant.image]}
                 className="w-full sm:w-1/2 lg:w-1/4 object-cover rounded-md"

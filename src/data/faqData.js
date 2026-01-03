@@ -12,7 +12,7 @@ export const faqs = [
   {
     question: "What payment methods do you accept?",
     answer:
-      "We accept KBZPay, Wave Money, AYA Pay, and COD. Full or partial payment may be required before production starts.",
+      "We accept KBZPay and COD only. Full or partial payment may be required before production starts.",
   },
   {
     question: "How long does it take to make a crochet item?",
@@ -22,7 +22,7 @@ export const faqs = [
   {
     question: "How long does shipping take?",
     answer:
-      "Yangon delivery usually takes 2–4 business days. Other cities may take 4–7 business days.",
+      "Delivery usually takes 2-5 business days depending on the cities. In unexpected circumstances, delivery may take longer.",
   },
   {
     question: "Can I return or exchange my order?",

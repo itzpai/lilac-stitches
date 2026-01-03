@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { faqs } from "../data/faqData";
 
-
 function FAQAccordion() {
     const [activeIndex, setActiveIndex] = useState(null);
 

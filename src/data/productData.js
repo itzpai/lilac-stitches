@@ -1,27 +1,27 @@
-import tp from "../images/Twinkling/Tp.jpg"
-import tb from "../images/Twinkling/Tb.jpg"
-import ty from "../images/Twinkling/Ty.jpg"
-import tv from "../images/Twinkling/Tv.jpg"
-import bb from "../images/Bunny/Bb.jpg"
-import bv from "../images/Bunny/Bv.jpg"
-import by from "../images/Bunny/By.jpg"
-import bp from "../images/Bunny/Bp.jpg"
-import bw from "../images/Bunny/Bw.jpg"
-import sy from "../images/Star/Sy.jpg"
-import sb from "../images/Star/Sb.jpg"
-import sp from "../images/Star/Sp.jpg"
-import sv from "../images/Star/Sv.jpg"
-import rw from "../images/RandomCharm/Rw.jpg"
-import rb from "../images/RandomCharm/Rb.jpg"
-import rp from "../images/RandomCharm/Rp.jpg"
-import ry from "../images/RandomCharm/Ry.jpg"
-import rv from "../images/RandomCharm/Rv.jpg"
+import tp from "../images/Twinkling/Tp.webp";
+import tb from "../images/Twinkling/Tb.webp";
+import ty from "../images/Twinkling/Ty.webp";
+import tv from "../images/Twinkling/Tv.webp";
+import bb from "../images/Bunny/Bb.webp";
+import bv from "../images/Bunny/Bv.webp";
+import by from "../images/Bunny/By.webp";
+import bp from "../images/Bunny/Bp.webp";
+import bw from "../images/Bunny/Bw.webp";
+import sy from "../images/Star/Sy.webp";
+import sb from "../images/Star/Sb.webp";
+import sp from "../images/Star/Sp.webp";
+import sv from "../images/Star/Sv.webp";
+import rw from "../images/RandomCharm/Rw.webp";
+import rb from "../images/RandomCharm/Rb.webp";
+import rp from "../images/RandomCharm/Rp.webp";
+import ry from "../images/RandomCharm/Ry.webp";
+import rv from "../images/RandomCharm/Rv.webp";
 
 export const products = [
   {
     id: "1",
     name: "Twinkling Cotton Candy",
-    price: 12000,
+    price: 22000,
     variants: [
       {
         color: "#f9a8d4",
@@ -29,7 +29,7 @@ export const products = [
         inStock: true,
       },
       {
-        color: "#c4b5fd",
+        color: "#b3b8db",
         image: tb,
         inStock: true,
       },
@@ -39,7 +39,7 @@ export const products = [
         inStock: true,
       },
       {
-        color: "#3D5EC1",
+        color: "#c99bf7",
         image: tv,
         inStock: true,
       },
@@ -55,7 +55,7 @@ export const products = [
   {
     id: "2",
     name: "Bunny Ears",
-    price: 13500,
+    price: 25000,
     variants: [
       {
         color: "#5F718A",
@@ -73,7 +73,7 @@ export const products = [
         inStock: true,
       },
       {
-        color: "#B3B3B5",
+        color: "#f0c6f2",
         image: bp,
         inStock: true,
       },
@@ -94,10 +94,10 @@ export const products = [
   {
     id: "3",
     name: "Stars on Top",
-    price: 18000,
+    price: 13500,
     variants: [
       {
-        color: "#fcd34d",
+        color: "#b5e572",
         image: sy,
         inStock: true,
       },
@@ -106,15 +106,15 @@ export const products = [
         image: sb,
         inStock: true,
       },
-      { 
-        color: "#a7f3d0", 
-        image: sp, 
-        inStock: true 
+      {
+        color: "#f7b2eb",
+        image: sp,
+        inStock: true,
       },
-      { 
-        color: "#A776B7", 
-        image: sv, 
-        inStock: true 
+      {
+        color: "#ba68e2",
+        image: sv,
+        inStock: true,
       },
     ],
     description:
@@ -128,7 +128,7 @@ export const products = [
   {
     id: "4",
     name: "Random Charm Collection",
-    price: 14000,
+    price: 20000,
     variants: [
       {
         color: "#F8F8F8",
@@ -141,12 +141,12 @@ export const products = [
         inStock: true,
       },
       {
-        color: "#a7f3d0",
+        color: "#e1e1e1",
         image: rp,
         inStock: true,
       },
       {
-        color: "#fcd34d",
+        color: "#b5e572",
         image: ry,
         inStock: true,
       },
