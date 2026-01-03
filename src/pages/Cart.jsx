@@ -13,6 +13,45 @@ export default function Cart() {
                 </h2>
                 <div className="flex flex-col items-center gap-6">
                     <p className="text-lg font-medium text-gray-600">Your cart is currently empty.</p>
+                    <div className="bg-white max-w-2xl mx-auto rounded-2xl shadow-md hover:shadow-lg p-8 ">
+                    <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+                        Order Instructions
+                    </h2>
+                    <div className="space-y-4 text-gray-700">
+                        <div className="flex">
+                            <span className="shrink-0 w-8 h-8 text-lg rounded-full flex items-center justify-center font-semibold">
+                                1.
+                            </span>
+                            <p className="pt-1">
+                                Select the item(s) you want and click <strong>"Add to Cart."</strong>
+                            </p>
+                        </div>
+                        <div className="flex">
+                            <span className="shrink-0 w-8 h-8 text-lg rounded-full flex items-center justify-center font-semibold">
+                                2.
+                            </span>
+                            <p className="pt-1">
+                                Once all desired items are added, go to your <strong>Cart.</strong>
+                            </p>
+                        </div>
+                        <div className="flex">
+                            <span className="shrink-0 w-8 h-8 text-lg rounded-full flex items-center justify-center font-semibold">
+                                3.
+                            </span>
+                            <p className="pt-1">
+                                Take a <strong>screenshot of the items in your cart</strong> for order confirmation.
+                            </p>
+                        </div>
+                        <div className="flex">
+                            <span className="shrink-0 w-8 h-8 text-lg rounded-full flex items-center justify-center font-semibold">
+                                4.
+                            </span>
+                            <p className="pt-1">
+                                Click <strong>"Checkout"</strong> to proceed to the checkout page.
+                            </p>
+                        </div>
+                    </div>
+                </div>
                     <Link to="/shop" className="mt-4 rounded-xl border-2 border-dashed border-purple-500 px-8 py-3 text-sm font-medium text-purple-500 transition hover:bg-purple-500 hover:text-white inline-block">
                         Go shopping
                     </Link>
@@ -23,7 +62,7 @@ export default function Cart() {
 
     return (
         <section className="bg-[#EEF5FF]">
-            <div className="text-center px-6 py-8 min-h-[90vh] max-w-4xl mx-auto">
+            <div className="text-center px-6 py-8 min-h-[80vh] max-w-2xl mx-auto">
                 <h2 className="mb-8 text-3xl font-bold text-gray-700">
                     Cart
                 </h2>
@@ -53,7 +92,7 @@ export default function Cart() {
                             <p>Ks {(item.price * item.quantity).toLocaleString()}</p>
                             <button
                                 onClick={() => removeFromCart(item.id, item.color)}
-                                className="mt-3 text-sm cursor-pointer hover:text-gray-600"
+                                className="mt-3 text-sm cursor-pointer hover:text-purple-400"
                             >
                                 <Trash />
                             </button>
@@ -61,14 +100,17 @@ export default function Cart() {
                     </div>
                 ))}
 
-                <div className="text-right mt-6">
-                    <p className="text-xl font-semibold">
-                        Total: Ks {totalPrice.toLocaleString()}
-                    </p>
+                <div className="text-right mt-4">
+                        <div className="flex gap-2 justify-end">
+                        <p className="text-lg text-gray-600">Total Amount:</p>
+                        <p className="text-lg font-medium text-gray-600">
+                            Ks {totalPrice.toLocaleString()} 
+                        </p>
+                        </div>
 
                     <Link
                         to="/checkout"
-                        className="inline-block mt-4 bg-purple-500 hover:bg-purple-400 text-white px-6 py-3 rounded-lg"
+                        className="inline-block my-4 rounded-xl border-2 border-dashed border-purple-500 px-8 py-3 text-sm font-medium text-purple-500 transition hover:bg-purple-500 hover:text-white"
                     >
                         Checkout
                     </Link>

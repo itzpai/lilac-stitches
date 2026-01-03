@@ -95,7 +95,6 @@ function Header() {
                 />
             )}
 
-
             <nav className="mx-auto flex max-w-7xl items-center justify-between p-5">
                 <div className="flex items-center">
                     {/* Mobile Menu Button */}
@@ -195,7 +194,6 @@ function Header() {
                     </li>
                 </ul>
 
-
                 {/* Desktop Icons */}
                 <div className=" items-center gap-5 flex">
                     <Search onClick={() => setSearchOpen(!searchOpen)} className="h-5 w-5 cursor-pointer text-gray-600 hover:text-purple-400" />
@@ -214,7 +212,7 @@ function Header() {
                     }`}>
                     <ul className="text-lg p-8 text-left">
                         <X onClick={() => { setOpen(false) }} className="cursor-pointer text-gray-600 hover:text-purple-400 border-2" />
-                        {["Home", "Products", "Shop", "AboutUs", "FAQs", "Wishlist", "Cart"].map((item) => (
+                        {["Home", "Shop", "AboutUs", "FAQs", "Wishlist", "Cart", "Checkout"].map((item) => (
                             <li key={item} className="pt-5 text-base font-medium">
                                 <NavLink
                                     to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
@@ -228,7 +226,6 @@ function Header() {
                     </ul>
                 </div>
             </div>
-
         </header>
     );
 };
