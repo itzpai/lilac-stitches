@@ -177,7 +177,9 @@ function Header() {
                 {/* Desktop Icons */}
                 <div className=" items-center gap-5 flex">
                     <Search onClick={() => setSearchOpen(!searchOpen)} className="h-5 w-5 cursor-pointer text-gray-600 hover:text-purple-400" />
+                    <NavLink to="/wishlist" className={({ isActive }) => isActive ? "text-purple-400 after:w-full" : "h-5 w-5 cursor-pointer text-gray-600 hover:text-purple-400"}>
                     <Heart className="h-5 w-5 text-gray-600 hover:text-purple-400" />
+                    </NavLink>
                     <NavLink to="/cart" className={({ isActive }) => isActive ? "text-purple-400 after:w-full" : "h-5 w-5 cursor-pointer text-gray-600 hover:text-purple-400"}>
                         <ShoppingBag className="h-5 w-5" />
                     </NavLink>

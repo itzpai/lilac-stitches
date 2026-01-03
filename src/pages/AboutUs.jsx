@@ -12,10 +12,8 @@ export default function AboutUs() {
             </div>
 
             {/* Content */}
-            <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 text-gray-600">
-                <div className="w-[400] h-[350]">
-                    <img className="w-full h-full object-cover" src="/Bb-removebg.webp" alt="bunny image" />
-                </div>
+            <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between py-8 text-gray-600">
+                <img className="w-full sm:w-1/2 lg:w-1/4 object-contain" src="/Bb-removebg.webp" alt="bunny image" />
                 <div className="max-w-md md:max-w-2xl space-y-8 leading-relaxed md:text-left">
                     <p>
                         We are a small handmade crochet brand inspired by softness, comfort,

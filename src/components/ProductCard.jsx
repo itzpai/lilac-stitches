@@ -1,9 +1,10 @@
 import { Heart } from "lucide-react";
-import { useState } from "react";
 import { Link } from "react-router";
+import { useWishlist } from "../context/WishlistContext";
 
 function ProductCard({ product }) {
-    const [liked, setLiked] = useState(false);
+    const { toggleWishlist, isWishlisted } = useWishlist();
+    const isLiked = isWishlisted(product.id);
 
     return (
         <Link to={`/product/${product.id}`}>
@@ -23,11 +24,14 @@ function ProductCard({ product }) {
                     )}
                     {/* Favorite Icon */}
                     <button
-                        onClick={() => setLiked(!liked)}
-                        className="absolute right-3 top-3 p-2 bg-white rounded-full"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            toggleWishlist(product)}}
+                        className="absolute right-3 top-3 p-2 bg-white rounded-full cursor-pointer"
                     >
                         <Heart
-                            className={`h-5 w-5 ${liked ? "fill-pink-500 text-pink-500" : "text-gray-400"
+                            className={`h-5 w-5 ${isLiked ? "fill-pink-500 text-pink-500" : "text-gray-400"
                                 }`}
                         />
                     </button>
@@ -57,8 +61,7 @@ function ProductCard({ product }) {
                     </div>
                     {product.inStock && (<div className="mt-2 text-sm text-red-500 font-semibold">
                         Out of Stock
-                    </div>
-                    )}
+                    </div>)}
                 </div>
             </div>
         </Link>

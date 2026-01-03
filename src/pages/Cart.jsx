@@ -13,7 +13,7 @@ export default function Cart() {
                 </h2>
                 <div className="flex flex-col items-center gap-6">
                     <p className="text-lg font-medium text-gray-600">Your cart is currently empty.</p>
-                    <Link to="/shop" className="rounded-xl border-2 border-dashed border-purple-500 px-8 py-3 text-sm font-medium text-purple-500 transition hover:bg-purple-500 hover:text-white">
+                    <Link to="/shop" className="mt-4 rounded-xl border-2 border-dashed border-purple-500 px-8 py-3 text-sm font-medium text-purple-500 transition hover:bg-purple-500 hover:text-white inline-block">
                         Go shopping
                     </Link>
                 </div>
