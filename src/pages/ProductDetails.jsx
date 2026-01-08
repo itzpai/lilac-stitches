@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useCart from "../context/CartContext";
 import { useWishlist } from "../context/WishlistContext";
 import { products } from "../data/productData";
@@ -10,6 +10,7 @@ export default function ProductDetails() {
     const { addToCart } = useCart();
     const { toggleWishlist, isWishlisted } = useWishlist();
     const [showPopup, setShowPopup] = useState(false);
+    const [qty, setQty] = useState(1);
 
     const product = products.find((p) => p.id === id);
     if (!product) return <p className="p-10">Product not found</p>;
@@ -17,8 +18,12 @@ export default function ProductDetails() {
     const [selectedVariant, setSelectedVariant] = useState(
         product.variants[0]
     );
+
+    useEffect(() => {
+        setSelectedVariant(product.variants[0]);
+    }, [product]);
+
     const isLiked = isWishlisted(product.id);
-    const [qty, setQty] = useState(1);
 
     return (
         <>

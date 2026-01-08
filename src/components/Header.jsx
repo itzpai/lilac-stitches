@@ -12,6 +12,7 @@ function Header() {
     const [query, setQuery] = useState("");
     const navigate = useNavigate();
     const searchRef = useRef(null)
+    const dropdownRef = useRef(null);
 
     // Search focus
     useEffect(() => {
@@ -19,6 +20,23 @@ function Header() {
             searchRef.current.focus()
         }
     }, [searchOpen])
+
+    // Close dropdowns when clicking outside
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (
+                dropdownRef.current &&
+                !dropdownRef.current.contains(event.target)
+            ) {
+                setProductOpen(false);
+                setInfoOpen(false);
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
 
     function handleSearch(e) {
         e.preventDefault();
@@ -123,7 +141,7 @@ function Header() {
                     </li>
                     <li
                         className="text-sm font-medium relative after:absolute after:bg-purple-400 after:h-0.5 after:w-0 after:left-0 after:top-6 after:duration-300 hover:text-purple-400 hover:after:w-full"
-                        onMouseOver={() => { 
+                        onMouseOver={() => {
                             setProductOpen(true);
                             setInfoOpen(false)
                         }}
@@ -134,6 +152,7 @@ function Header() {
 
                         {productOpen && (
                             <div
+                                ref={dropdownRef}
                                 className="absolute -left-50 top-full mt-3 w-md rounded-xl bg-white p-2 shadow-lg z-50"
                                 onMouseLeave={() => { setProductOpen(false) }}
                             >
@@ -174,6 +193,7 @@ function Header() {
 
                         {infoOpen && (
                             <div
+                                ref={dropdownRef}
                                 className="absolute left-0 top-full mt-3 w-44 rounded-xl bg-white p-2 shadow-lg"
                                 onMouseLeave={() => { setInfoOpen(false) }}>
                                 <NavLink
@@ -208,11 +228,11 @@ function Header() {
 
             {/* Mobile Menu */}
             <div className="md:hidden">
-                <div onClick={() => { setOpen(false) }} className={`fixed h-screen inset-0 bg-white transform transition-all duration-300 ease-in-out ${open ? "translate-x-0" : "-translate-x-full"
+                <div onClick={() => { setOpen(false) }} className={`fixed h-fit w-1/2 inset-0 bg-white transform transition-all duration-300 ease-in-out ${open ? "translate-x-0" : "-translate-x-full"
                     }`}>
                     <ul className="text-lg p-8 text-left">
                         <X onClick={() => { setOpen(false) }} className="cursor-pointer text-gray-600 hover:text-purple-400 border-2" />
-                        {["Home", "Shop", "AboutUs", "FAQs", "Wishlist", "Cart", "Checkout"].map((item) => (
+                        {["Home", "Shop", "AboutUs", "FAQs", "Wishlist", "Cart"].map((item) => (
                             <li key={item} className="pt-5 text-base font-medium">
                                 <NavLink
                                     to={item === "Home" ? "/" : `/${item.toLowerCase()}`}

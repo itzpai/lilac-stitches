@@ -1,14 +1,47 @@
 import { Heart } from "lucide-react";
 import { Link } from "react-router";
+import { useEffect, useRef, useState } from "react";
 import { useWishlist } from "../context/WishlistContext";
 
-function ProductCard({ product }) {
+function ProductCard({ product, index }) {
+    const cardRef = useRef(null);
+    const [visible, setVisible] = useState(false);
+
     const { toggleWishlist, isWishlisted } = useWishlist();
     const isLiked = isWishlisted(product.id);
 
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setVisible(true);
+                    observer.unobserve(entry.target); // animate once only
+                }
+            },
+            {
+                threshold: 0.2, // 20% visible
+            }
+        );
+
+        if (cardRef.current) observer.observe(cardRef.current);
+
+        return () => observer.disconnect();
+    }, []);
+
     return (
         <Link to={`/product/${product.id}`}>
-            <div className="group rounded-2xl bg-white p-4 shadow-sm transition hover:shadow-md cursor-pointer">
+            <div
+                ref={cardRef}
+                style={{ transitionDelay: `${index * 80}ms` }}
+                className={`
+    group rounded-2xl bg-white p-4 cursor-pointer
+    transition-all duration-500 ease-out
+    ${visible
+                        ? "opacity-100 translate-y-0 scale-100"
+                        : "opacity-0 translate-y-6 scale-95"}
+    shadow-md hover:shadow-lg
+  `}
+            >
                 {/* Image Wrapper */}
                 <div className="relative overflow-hidden rounded-xl bg-gray-100">
                     <img
@@ -27,7 +60,8 @@ function ProductCard({ product }) {
                         onClick={(e) => {
                             e.preventDefault();
                             e.stopPropagation();
-                            toggleWishlist(product)}}
+                            toggleWishlist(product)
+                        }}
                         className="absolute right-3 top-3 p-2 bg-white rounded-full cursor-pointer"
                     >
                         <Heart

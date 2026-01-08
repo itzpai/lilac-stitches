@@ -29,13 +29,25 @@ function Footer() {
                     </div>
                     <div className="flex flex-col gap-3 md:gap-5 text-gray-400">
                         <p className="text-purple-400 mb-1">Contact Us</p>
-                        <p className="flex items-center gap-2 text-sm cursor-pointer hover:text-purple-400">
-                            <Link to="https://www.facebook.com/share/17VRcu15AY/?mibextid=wwXIfr"><FaFacebookF size={22} /></Link>
-                            <span>Lilac Stitches</span>
+                        <p className="inline-block text-sm cursor-pointer hover:text-purple-400">
+                            <a
+                                href="https://www.facebook.com/share/17VRcu15AY/?mibextid=wwXIfr"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2"
+                            >
+                                <FaFacebookF size={22} /> <span>Lilac Stitches</span>
+                            </a>
                         </p>
-                        <p className="flex items-center gap-2 text-sm cursor-pointer hover:text-purple-400">
-                            <Link to="https://www.tiktok.com/@lilac_stitches?_r=1&_t=ZS-92fuOMtcAML"><FaTiktok size={22} /></Link>
-                            <span>@lilac_stitches</span>
+                        <p className="inline-block text-sm cursor-pointer hover:text-purple-400">
+                            <a
+                                href="https://www.tiktok.com/@lilac_stitches?_r=1&_t=ZS-92fuOMtcAML"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2"
+                            >
+                                <FaTiktok size={22} /><span>@lilac_stitches</span>
+                            </a>
                         </p>
                         <p className="flex items-center gap-2 text-sm cursor-pointer hover:text-purple-400">
                             <Phone />+95 9 790 870 444

@@ -1,8 +1,37 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router"
 import ProductCard from "../components/ProductCard";
 import { products } from "../data/productData";
 
 function Home() {
+    // banner image shuffle
+    const bannerImages = [
+        "/home.webp",
+        "/Bb-removebg.webp",
+        "/Tp-removebg.webp",
+    ];
+    const [bannerIdx, setBannerIdx] = useState(0);
+    const [fade, setFade] = useState(true);
+
+    function shuffleBanner() {
+        setFade(false);
+        setTimeout(() => {
+            let nextIdx;
+            do {
+                nextIdx = Math.floor(Math.random() * bannerImages.length);
+            } while (nextIdx === bannerIdx);
+            setBannerIdx(nextIdx);
+            setFade(true);
+        }, 200);
+    }
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            shuffleBanner();
+        }, 3000);
+        return () => clearInterval(interval);
+    }, [bannerIdx]);
+
     return (
         <>
             {/* banner */}
@@ -21,11 +50,12 @@ function Home() {
                         Buy Now
                     </Link>
                 </div>
-                <div className="w-[400] h-[350]">
+                <div className="relative w-120 h-100 ml-7">
                     <img
-                        src="/home.webp"
+                        src={bannerImages[bannerIdx]}
                         alt="promo-photo"
-                        className="w-full h-full object-cover"
+                        className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-500 ${fade ? "opacity-100" : "opacity-0"
+                            }`}
                     />
                 </div>
             </div>
@@ -36,8 +66,8 @@ function Home() {
                     Our Products
                 </h2>
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                    {products.map((product) => (
-                        <ProductCard key={product.id} product={product} />
+                    {products.map((product, index) => (
+                        <ProductCard key={product.id} product={product} index={index} />
                     ))}
                 </div>
             </div>
@@ -50,9 +80,9 @@ function Home() {
                     Want a special design in mind? We love creating <br /> custom pieces tailored
                     for you.
                 </p>
-                <Link to="https://m.me/61579644806455" className="rounded-xl border-2 border-dashed border-purple-500 px-8 py-3 text-sm font-medium text-purple-500 transition hover:bg-purple-500 hover:text-white">
+                <a href="https://m.me/61579644806455" target="_blank" rel="noopener noreferrer" className="rounded-xl border-2 border-dashed border-purple-500 px-8 py-3 text-sm font-medium text-purple-500 transition hover:bg-purple-500 hover:text-white">
                     Custom Order
-                </Link>
+                </a>
             </div>
         </>
     )
